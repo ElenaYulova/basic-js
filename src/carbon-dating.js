@@ -17,9 +17,15 @@ const HALF_LIFE_PERIOD = 5730;
  * dateSample('WOOT!') => false
  *
  */
-function dateSample(/* sampleActivity */) {
-  // Remove line below and write your code here
-  throw new NotImplementedError('Not implemented');
+function dateSample(sampleActivity ) {
+  if (sampleActivity &&
+    typeof sampleActivity === 'string' &&
+    typeof +sampleActivity === 'number' &&
+    +sampleActivity > 0 &&
+     +sampleActivity <= 15) {
+    return Math.ceil(Math.log(MODERN_ACTIVITY / sampleActivity) / (0.693 / HALF_LIFE_PERIOD));
+  }
+  return false
 }
 
 module.exports = {
